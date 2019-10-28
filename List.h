@@ -351,13 +351,6 @@ bool List<Item>::insertAfter(const Item& itemBefore, const Item& newItem) {
     if (mySize == 0)
         return false;
 
-    // If we are putting an item after the last item, then we shouldn't bother looping through every node.
-    if (itemBefore == myLast->myItem) {
-        myLast = myLast->myNext = new Node(newItem, nullptr);
-        ++mySize;
-        return true;
-    }
-
     for (Node* node = myFirst; node; node = node->myNext) {
         if (node->myItem == itemBefore) {
             if (node->myNext == nullptr)
